@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedHaven | Caring for Every Generation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DESIGN SYSTEM FOUNDATION [cite: 314-320] */
+        :root {
+            --primary-blue: #0A3D62;
+            --soft-blue: #1E90FF;
+            --teal-accent: #2EC4B6;
+            --white: #FFFFFF;
+            --light-grey: #F5F7FA;
+            --navy-dark: #0c2a42;
+            --shadow: rgba(10, 61, 98, 0.08);
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--primary-blue); }
+
+        /* HEADER [cite: 149-160, 464-477] */
+        header {
+            position: fixed; top: 0; width: 100%; height: 88px;
+            background: var(--white); z-index: 1000;
+            display: flex; align-items: center;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 80px; width: 100%; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo h2 { font-size: 1.75rem; font-weight: 700; color: var(--primary-blue); }
+        .logo span { color: var(--teal-accent); }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { text-decoration: none; color: var(--primary-blue); font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--teal-accent); }
+
+        /* HERO SECTION [cite: 171-181, 478-494] */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--soft-blue) 100%);
+            min-height: 720px; padding-top: 88px; display: flex; align-items: center; color: white;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .hero h1 { color: white; font-size: 56px; line-height: 1.1; margin-bottom: 24px; }
+        .hero-sub { font-size: 1.5rem; margin-bottom: 40px; opacity: 0.9; font-weight: 500; }
+
+        .btn { 
+            padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; 
+            font-weight: 600; transition: 0.3s; display: inline-block; border: none; cursor: pointer;
+        }
+        .btn-primary { background: var(--primary-blue); color: var(--white); }
+        .btn-outline { background: transparent; color: white; border: 2px solid white; margin-left: 15px; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* GLASSMORPHISM CARD [cite: 9, 350, 493] */
+        .hero-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 60px; border-radius: 20px; text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        /* TRUST BAR [cite: 182-188, 498-509] */
+        .trust-bar { padding: 40px 0; background: white; border-bottom: 1px solid #eee; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+        .trust-item i { font-size: 2rem; color: var(--teal-accent); margin-bottom: 10px; display: block; }
+        .trust-item p { font-weight: 600; color: #555; }
+
+        /* SERVICES SNAPSHOT [cite: 189-200, 510-526] */
+        .services { padding: 96px 0; background: var(--light-grey); }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card {
+            background: white; padding: 40px; border-radius: 16px; transition: 0.3s;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px var(--shadow); }
+        .service-card i { font-size: 2.5rem; color: var(--soft-blue); margin-bottom: 20px; display: block; }
+        .service-card a { color: var(--teal-accent); font-weight: 600; text-decoration: none; display: block; margin-top: 20px; }
+
+        /* FOOTER [cite: 161-169, 571-582] */
+        footer { background: var(--navy-dark); color: white; padding: 80px 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; display: flex; justify-content: space-between; font-size: 0.9rem; opacity: 0.7; }
+
+        /* RESPONSIVENESS [cite: 583-589] */
+        @media (max-width: 1024px) {
+            .container { padding: 0 30px; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-card { display: none; }
+            .trust-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h2>Med<span>Haven</span></h2> </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li> <li><a href="#services">Services</a></li> <li><a href="#how">How It Works</a></li> <li><a href="#about">About</a></li> <li><a href="#contact">Contact</a></li> </ul>
+            </nav>
+            <a href="#book" class="btn btn-primary">Book a Nurse</a> </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Professional Nursing & Midwifery Care, Delivered to Your Home.</h1> <p class="hero-sub">Licensed • On-demand • Compassionate</p> <div class="hero-btns">
+                    <a href="#book" class="btn btn-primary">Book a Nurse</a> <a href="#talk" class="btn btn-outline">Talk to Coordinator</a> </div>
+            </div>
+            <div class="hero-illustration">
+                <div class="hero-card">
+                    <i class="fas fa-heartbeat" style="font-size: 5rem; margin-bottom: 20px;"></i>
+                    <p style="font-size: 1.5rem; font-weight: 600;">Healthcare Beyond Hospital Walls</p> </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <i class="fas fa-user-md"></i>
+                <p>Licensed Nurses (NCK)</p> </div>
+            <div class="trust-item">
+                <i class="fas fa-clock"></i>
+                <p>24/7 Support</p> </div>
+            <div class="trust-item">
+                <i class="fas fa-house-chimney-medical"></i>
+                <p>Home-Based Care</p> </div>
+            <div class="trust-item">
+                <i class="fas fa-shield-halved"></i>
+                <p>Data Protected (DPA)</p> </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Core Services</h2> <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Home Nursing</h3> <p>Post-surgical care, IV therapy, and professional wound management.</p> <a href="#">Learn More →</a> </div>
+                <div class="service-card">
+                    <i class="fas fa-baby"></i>
+                    <h3>Midwifery Care</h3> <p>Postnatal mother care, breastfeeding support, and newborn health.</p> <a href="#">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-person-cane"></i>
+                    <h3>Geriatric Care</h3> <p>Elderly home monitoring, medication administration, and hygiene.</p> <a href="#">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <h3>MedHaven</h3>
+                <p style="opacity:0.7; margin-top:15px;">Caring for Every Generation. Healthcare beyond hospital walls.</p> </div>
+            <div>
+                <h4 style="margin-bottom:20px;">Quick Links</h4>
+                <ul style="list-style:none; opacity:0.7;">
+                    <li style="margin-bottom:10px;">Services</li>
+                    <li style="margin-bottom:10px;">Impact</li>
+                    <li style="margin-bottom:10px;">Careers</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;">Compliance</h4>
+                <p style="font-size:0.8rem; opacity:0.7;">MoH Aligned<br>NCK Licensed<br>Data Protected (Kenya DPA 2019)</p> </div>
+            <div>
+                <h4 style="margin-bottom:20px;">Contact</h4>
+                <p style="opacity:0.7;">Nairobi, Kenya<br>Emergency: 24/7 Available</p> <a href="#" class="btn btn-primary" style="margin-top:20px; font-size:0.8rem; padding: 10px 20px;">WhatsApp Us</a> </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 MedHaven. All rights reserved.</p> <p>Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    
+
+</body>
+</html>
